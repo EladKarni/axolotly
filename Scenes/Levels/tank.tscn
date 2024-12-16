@@ -1,15 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcfv14tku5j0q"]
+[gd_scene load_steps=7 format=3 uid="uid://dcfv14tku5j0q"]
 
-[ext_resource type="Shader" path="res://Scripts/Shaders/water_caustics.gdshader" id="1_bppo2"]
 [ext_resource type="PackedScene" uid="uid://da141sa38otd" path="res://Scenes/Entity/Axolotl/axolotlSylvis.tscn" id="3_34rmx"]
 [ext_resource type="Texture2D" uid="uid://w2qv48dhwe70" path="res://icon.svg" id="4_8fre5"]
 [ext_resource type="PackedScene" uid="uid://bincliul27q74" path="res://Scenes/Entity/Axolotl/axolotlIsophene.tscn" id="4_56ma8"]
 [ext_resource type="PackedScene" uid="uid://gtto1yh7t3a6" path="res://Scenes/Entity/Axolotl/axolotlKyra.tscn" id="4_gu3ia"]
 [ext_resource type="PackedScene" uid="uid://b21pxqdwvf6xj" path="res://Scenes/Entity/Axolotl/axolotlRoscoe.tscn" id="4_lg7c0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ikdqo"]
-render_priority = 0
-shader = ExtResource("1_bppo2")
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_npol4"]
 
 [node name="Tank" type="Node2D"]
 
@@ -47,7 +44,7 @@ position = Vector2(302, 313)
 scale = Vector2(3, 3)
 wakeup_delay = 4
 
-[node name="Axolotl" parent="." instance=ExtResource("4_gu3ia")]
+[node name="Bolt" parent="." instance=ExtResource("4_gu3ia")]
 position = Vector2(93, 205)
 scale = Vector2(3, 3)
 wakeup_delay = 3
@@ -60,15 +57,36 @@ zoom = Vector2(2, 2)
 position = Vector2(1180, 161)
 texture = ExtResource("4_8fre5")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
+[node name="BottomOfTank" type="StaticBody2D" parent="."]
+position = Vector2(299, 363)
+collision_layer = 2
 
-[node name="Caustics" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_ikdqo")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-metadata/_edit_use_anchors_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomOfTank"]
+shape = SubResource("WorldBoundaryShape2D_npol4")
+
+[node name="TopOfTank" type="StaticBody2D" parent="."]
+position = Vector2(310, 0)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopOfTank"]
+position = Vector2(0, 1)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_npol4")
+
+[node name="LeftOfTank" type="StaticBody2D" parent="."]
+position = Vector2(4, 167)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftOfTank"]
+position = Vector2(1, 1)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_npol4")
+
+[node name="RightOfTank" type="StaticBody2D" parent="."]
+position = Vector2(647, 170)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightOfTank"]
+position = Vector2(1, 1)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_npol4")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b21pxqdwvf6xj"]
+[gd_scene load_steps=73 format=3 uid="uid://b21pxqdwvf6xj"]
 
 [ext_resource type="Script" path="res://Scenes/Entity/Axolotl/axolotl.gd" id="1_msa3a"]
 [ext_resource type="Texture2D" uid="uid://i3khbeyx8nmq" path="res://Assets/Axolotl/Spritesheets/Axolotl_Deep_Sea_Floating.png" id="2_wm1vt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dkpgxie8e78o8" path="res://Assets/Axolotl/Spritesheets/Axolotl_Deep_Sea_Preparing_To_Swim.png" id="6_sxtp8"]
 [ext_resource type="Texture2D" uid="uid://cfr8ok0x0h2ip" path="res://Assets/Axolotl/Spritesheets/Axolotl_Deep_Sea_Swimming.png" id="7_hgm70"]
 [ext_resource type="Script" path="res://Scripts/State/state_machine.gd" id="8_rvtcr"]
+[ext_resource type="Texture2D" uid="uid://d2lyfxi085yxw" path="res://Assets/Axolotl/Santa Hats/Roscoe_Santa_Hat.png" id="8_w0be5"]
 [ext_resource type="Script" path="res://Scripts/State/idle_sleeping.gd" id="9_2wgbs"]
 [ext_resource type="Script" path="res://Scripts/State/idle_floating.gd" id="10_kww32"]
 [ext_resource type="Script" path="res://Scripts/State/swimming.gd" id="11_y5gx4"]
@@ -449,6 +450,7 @@ animations = [{
 }]
 
 [node name="Axolotl" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_msa3a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -460,6 +462,31 @@ position = Vector2(2, -16)
 sprite_frames = SubResource("SpriteFrames_s4wia")
 animation = &"swimming"
 autoplay = "idle_resting"
+
+[node name="SantaHat" type="Node2D" parent="."]
+position = Vector2(2, -16)
+
+[node name="SantaHatSprite" type="Sprite2D" parent="SantaHat"]
+position = Vector2(-3, -2)
+rotation = 3.14159
+scale = Vector2(0.380748, 0.393577)
+texture = ExtResource("8_w0be5")
+offset = Vector2(8.57769, 32.9904)
+flip_h = true
+flip_v = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -17.0
+offset_right = 18.0
+offset_bottom = 23.0
+theme_override_colors/default_color = Color(0.619608, 0.992157, 0.882353, 1)
+theme_override_colors/font_shadow_color = Color(0.157607, 0.376879, 0.360327, 1)
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "Charge"
+fit_content = true
+
+[node name="Sleep_Timer" type="Timer" parent="."]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_rvtcr")
@@ -482,13 +509,4 @@ swim_speed = 10
 script = ExtResource("12_2fio7")
 idle_timer = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -17.0
-offset_right = 18.0
-offset_bottom = 23.0
-theme_override_colors/default_color = Color(0.619608, 0.992157, 0.882353, 1)
-theme_override_colors/font_shadow_color = Color(0.157607, 0.376879, 0.360327, 1)
-theme_override_font_sizes/normal_font_size = 10
-bbcode_enabled = true
-text = "Charge"
-fit_content = true
+[connection signal="timeout" from="Sleep_Timer" to="StateMachine/Floating" method="_on_sleep_timer_timeout"]

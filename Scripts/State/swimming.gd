@@ -3,10 +3,11 @@ class_name Swimming
 
 @export var animatedSprite: AnimatedSprite2D
 @export var swim_speed : int
-@onready var character: Axolotl = $"../.."
 
+@onready var character: Axolotl = $"../.."
+@onready var santa_hat: Node2D = $"../../SantaHat"
 @onready var label: RichTextLabel = $"../../RichTextLabel"
-@onready var sleep_timer = Timer.new()
+@onready var sleep_timer: Timer = $"../../Sleep_Timer"
 
 var move_direction: Vector2
 var wonder_time: float
@@ -20,13 +21,13 @@ func randomize_swimming():
 
 
 func Enter():
-	add_child(sleep_timer)
+	santa_hat.show()
+	randomize_swimming()
+	label.hide()
+	animatedSprite.play("swimming")
 	sleep_timer.wait_time = idle_timer
 	sleep_timer.one_shot = true
 	sleep_timer.start()
-	animatedSprite.play("swimming")
-	label.hide()
-	randomize_swimming()
 
 func Update(delta: float):
 	if wonder_time > 0:
@@ -43,6 +44,7 @@ func Update(delta: float):
 			if not sleep_timer.is_stopped():
 				randomize_swimming()
 			else:
+				santa_hat.hide()
 				animatedSprite.play_backwards("swim_prep")
 				await animatedSprite.animation_finished
 				Transitioned.emit(self, "Idle Floating")
@@ -54,8 +56,10 @@ func Physics_Update(delta: float):
 	
 	if move_direction.x > 0:
 		animatedSprite.flip_h = true
+		santa_hat.scale.x =  -1
 	else:
 		animatedSprite.flip_h = false
+		santa_hat.scale.x = 1
 		
 	if character:
 		character.velocity = move_direction * swim_speed

@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bincliul27q74"]
+[gd_scene load_steps=73 format=3 uid="uid://bincliul27q74"]
 
 [ext_resource type="Script" path="res://Scenes/Entity/Axolotl/axolotl.gd" id="1_yll2k"]
 [ext_resource type="Texture2D" uid="uid://0x6i1p83gp2w" path="res://Assets/Axolotl/Spritesheets/Axolotl_Red_Floating.png" id="2_j0e8w"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://btirpvpcwrvdg" path="res://Assets/Axolotl/Spritesheets/Axolotl_Red_Resting_Idle.png" id="5_do1dg"]
 [ext_resource type="Texture2D" uid="uid://dwqyqnwd7rvk1" path="res://Assets/Axolotl/Spritesheets/Axolotl_Red_Preparing_To_Swim.png" id="6_qauj6"]
 [ext_resource type="Texture2D" uid="uid://cnjfethif7mr2" path="res://Assets/Axolotl/Spritesheets/Axolotl_Red_Swimming.png" id="7_g0d0x"]
+[ext_resource type="Texture2D" uid="uid://bprehv3uob0yl" path="res://Assets/Axolotl/Santa Hats/Isophene_Santa_Hat_Small.png" id="8_2ds5c"]
 [ext_resource type="Script" path="res://Scripts/State/state_machine.gd" id="8_vhyec"]
 [ext_resource type="Script" path="res://Scripts/State/idle_sleeping.gd" id="9_gkri0"]
 [ext_resource type="Script" path="res://Scripts/State/idle_floating.gd" id="10_gvtil"]
@@ -449,6 +450,7 @@ animations = [{
 }]
 
 [node name="Axolotl" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_yll2k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -458,8 +460,33 @@ shape = SubResource("RectangleShape2D_pkqob")
 [node name="AxolotlyAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -16)
 sprite_frames = SubResource("SpriteFrames_s4wia")
-animation = &"floating"
+animation = &"swimming"
 autoplay = "idle_resting"
+
+[node name="SantaHat" type="Node2D" parent="."]
+position = Vector2(2, -16)
+
+[node name="SantaHatSprite" type="Sprite2D" parent="SantaHat"]
+rotation = 3.14159
+scale = Vector2(0.5, 0.516848)
+texture = ExtResource("8_2ds5c")
+offset = Vector2(8.57769, 32.9904)
+flip_h = true
+flip_v = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -14.0
+offset_right = 18.0
+offset_bottom = 23.0
+theme_override_colors/default_color = Color(1, 0.458824, 0.184314, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.0352941, 0.00392157, 1)
+theme_override_colors/font_shadow_color = Color(0.360784, 0.0352941, 0.00392157, 1)
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "Blast"
+fit_content = true
+
+[node name="Sleep_Timer" type="Timer" parent="."]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_vhyec")
@@ -482,14 +509,4 @@ swim_speed = 10
 script = ExtResource("12_n5fep")
 idle_timer = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -14.0
-offset_right = 18.0
-offset_bottom = 23.0
-theme_override_colors/default_color = Color(1, 0.458824, 0.184314, 1)
-theme_override_colors/font_outline_color = Color(0.360784, 0.0352941, 0.00392157, 1)
-theme_override_colors/font_shadow_color = Color(0.360784, 0.0352941, 0.00392157, 1)
-theme_override_font_sizes/normal_font_size = 10
-bbcode_enabled = true
-text = "Blast"
-fit_content = true
+[connection signal="timeout" from="Sleep_Timer" to="StateMachine/Floating" method="_on_sleep_timer_timeout"]
