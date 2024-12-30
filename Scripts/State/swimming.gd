@@ -37,6 +37,7 @@ func Update(delta: float):
 		if next_decision_change == 0:
 			randomize_swimming()
 		elif next_decision_change == 1:
+			santa_hat.hide()
 			animatedSprite.play_backwards("swim_prep")
 			await animatedSprite.animation_finished
 			Transitioned.emit(self, "Floating")
@@ -44,7 +45,6 @@ func Update(delta: float):
 			if not sleep_timer.is_stopped():
 				randomize_swimming()
 			else:
-				santa_hat.hide()
 				animatedSprite.play_backwards("swim_prep")
 				await animatedSprite.animation_finished
 				Transitioned.emit(self, "Idle Floating")

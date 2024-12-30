@@ -1,5 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcfv14tku5j0q"]
+[gd_scene load_steps=9 format=3 uid="uid://dcfv14tku5j0q"]
 
+[ext_resource type="Texture2D" uid="uid://blfkglc8u5grl" path="res://Assets/Backgrounds/Snowman.png" id="1_0owh8"]
+[ext_resource type="Texture2D" uid="uid://kppdxkvtwdtb" path="res://Assets/Backgrounds/christmas_tree.png" id="1_mgcyf"]
 [ext_resource type="PackedScene" uid="uid://da141sa38otd" path="res://Scenes/Entity/Axolotl/axolotlSylvis.tscn" id="3_34rmx"]
 [ext_resource type="Texture2D" uid="uid://w2qv48dhwe70" path="res://icon.svg" id="4_8fre5"]
 [ext_resource type="PackedScene" uid="uid://bincliul27q74" path="res://Scenes/Entity/Axolotl/axolotlIsophene.tscn" id="4_56ma8"]
@@ -29,23 +31,33 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.4, 0.552941, 0.980392, 0.74902)
 
+[node name="Snowman" type="Sprite2D" parent="."]
+position = Vector2(595.875, 284.54)
+scale = Vector2(0.212006, 0.212006)
+texture = ExtResource("1_0owh8")
+
+[node name="ChristmasTree" type="Sprite2D" parent="."]
+position = Vector2(319, 219)
+scale = Vector2(0.656174, 0.656174)
+texture = ExtResource("1_mgcyf")
+
 [node name="Blu" parent="." instance=ExtResource("3_34rmx")]
-position = Vector2(216, 193)
+position = Vector2(559, 324)
 scale = Vector2(3, 3)
 wakeup_delay = 1
 
 [node name="Blast" parent="." instance=ExtResource("4_56ma8")]
-position = Vector2(417, 205)
+position = Vector2(454, 322)
 scale = Vector2(3, 3)
 wakeup_delay = 2
 
 [node name="Charge" parent="." instance=ExtResource("4_lg7c0")]
-position = Vector2(302, 313)
+position = Vector2(173, 316)
 scale = Vector2(3, 3)
 wakeup_delay = 4
 
 [node name="Bolt" parent="." instance=ExtResource("4_gu3ia")]
-position = Vector2(93, 205)
+position = Vector2(72, 317)
 scale = Vector2(3, 3)
 wakeup_delay = 3
 

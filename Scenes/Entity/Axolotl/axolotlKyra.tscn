@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bsabiwyf1pmql" path="res://Assets/Axolotl/Spritesheets/Axolotl_Black_Resting_Idle.png" id="5_lhhcs"]
 [ext_resource type="Texture2D" uid="uid://duflpilbdofl4" path="res://Assets/Axolotl/Spritesheets/Axolotl_Black_Preparing_To_Swim.png" id="6_vqvt0"]
 [ext_resource type="Texture2D" uid="uid://c2lcj6hwyvhf8" path="res://Assets/Axolotl/Spritesheets/Axolotl_Black_Swimming.png" id="7_m1rb2"]
-[ext_resource type="Texture2D" uid="uid://bprehv3uob0yl" path="res://Assets/Axolotl/Santa Hats/Isophene_Santa_Hat_Small.png" id="8_m2dmu"]
 [ext_resource type="Script" path="res://Scripts/State/state_machine.gd" id="8_t43as"]
+[ext_resource type="Texture2D" uid="uid://dhu4v7m02uqk5" path="res://Assets/Axolotl/Santa Hats/Kyra_Santa_Hat.png" id="8_ywbxs"]
 [ext_resource type="Script" path="res://Scripts/State/idle_sleeping.gd" id="9_cf3fo"]
 [ext_resource type="Script" path="res://Scripts/State/idle_floating.gd" id="10_uhiqg"]
 [ext_resource type="Script" path="res://Scripts/State/swimming.gd" id="11_ypqtf"]
@@ -454,22 +454,24 @@ collision_mask = 2
 script = ExtResource("1_ewpmp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, -16)
 shape = SubResource("RectangleShape2D_pkqob")
 
 [node name="AxolotlyAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -16)
 sprite_frames = SubResource("SpriteFrames_s4wia")
-animation = &"floating"
+animation = &"swimming"
 autoplay = "idle_resting"
 
 [node name="SantaHat" type="Node2D" parent="."]
 position = Vector2(2, -16)
 
 [node name="SantaHatSprite" type="Sprite2D" parent="SantaHat"]
+position = Vector2(-6.43301, -11.2752)
 rotation = 3.14159
-scale = Vector2(0.5, 0.516848)
-texture = ExtResource("8_m2dmu")
+scale = Vector2(0.0490835, 0.0511326)
+texture = ExtResource("8_ywbxs")
 offset = Vector2(8.57769, 32.9904)
 flip_h = true
 flip_v = true

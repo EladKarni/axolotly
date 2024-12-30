@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://btirpvpcwrvdg" path="res://Assets/Axolotl/Spritesheets/Axolotl_Red_Resting_Idle.png" id="5_do1dg"]
 [ext_resource type="Texture2D" uid="uid://dwqyqnwd7rvk1" path="res://Assets/Axolotl/Spritesheets/Axolotl_Red_Preparing_To_Swim.png" id="6_qauj6"]
 [ext_resource type="Texture2D" uid="uid://cnjfethif7mr2" path="res://Assets/Axolotl/Spritesheets/Axolotl_Red_Swimming.png" id="7_g0d0x"]
-[ext_resource type="Texture2D" uid="uid://bprehv3uob0yl" path="res://Assets/Axolotl/Santa Hats/Isophene_Santa_Hat_Small.png" id="8_2ds5c"]
+[ext_resource type="Texture2D" uid="uid://c7ihk1fv5q0f" path="res://Assets/Axolotl/Santa Hats/Isophene_Santa_Hat.png" id="8_302ex"]
 [ext_resource type="Script" path="res://Scripts/State/state_machine.gd" id="8_vhyec"]
 [ext_resource type="Script" path="res://Scripts/State/idle_sleeping.gd" id="9_gkri0"]
 [ext_resource type="Script" path="res://Scripts/State/idle_floating.gd" id="10_gvtil"]
@@ -467,9 +467,10 @@ autoplay = "idle_resting"
 position = Vector2(2, -16)
 
 [node name="SantaHatSprite" type="Sprite2D" parent="SantaHat"]
+position = Vector2(-3.85641, -7.07822)
 rotation = 3.14159
-scale = Vector2(0.5, 0.516848)
-texture = ExtResource("8_2ds5c")
+scale = Vector2(0.20004, 0.21663)
+texture = ExtResource("8_302ex")
 offset = Vector2(8.57769, 32.9904)
 flip_h = true
 flip_v = true

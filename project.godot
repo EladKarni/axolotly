@@ -19,9 +19,9 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=3
 window/size/resizable=false
-window/size/transparent=true
-window/per_pixel_transparency/allowed=true
+window/stretch/aspect="expand"
 
 [rendering]
 
