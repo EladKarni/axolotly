@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://diasmlw6l555u"]
+
+[ext_resource type="Texture2D" uid="uid://b57tpniiton6x" path="res://Assets/Backgrounds/sand.png" id="2_qcuvv"]
+[ext_resource type="Texture2D" uid="uid://cga6n60616b2e" path="res://Assets/Backgrounds/foreground-1.png" id="3_20brm"]
+[ext_resource type="Texture2D" uid="uid://chw03ex6joja8" path="res://Assets/Backgrounds/foreground-2.png" id="4_o5npy"]
+[ext_resource type="PackedScene" uid="uid://b5egq0244fu3h" path="res://Scenes/Entity/Axolotl/axolotl_swimmer.tscn" id="5_7h38c"]
+[ext_resource type="Texture2D" uid="uid://c35inhp7sy2kg" path="res://Assets/Backgrounds/far.png" id="5_nbeco"]
+[ext_resource type="Script" path="res://Scripts/LevelScripts/obstecal_generator.gd" id="6_hhp3t"]
+[ext_resource type="PackedScene" uid="uid://dwc6el7wa1tjf" path="res://Scenes/Entity/Obstecals/piller.tscn" id="7_jkiap"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l0pm5"]
+
+[node name="EndlessRunningWorld" type="Node2D"]
+
+[node name="Boundries" type="Node2D" parent="."]
+
+[node name="BottomOfTank" type="StaticBody2D" parent="Boundries"]
+position = Vector2(287, 717)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/BottomOfTank"]
+shape = SubResource("WorldBoundaryShape2D_l0pm5")
+
+[node name="TopOfTank" type="StaticBody2D" parent="Boundries"]
+position = Vector2(310, 3.05176e-05)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/TopOfTank"]
+position = Vector2(0, 1)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_l0pm5")
+
+[node name="LeftOfTank" type="StaticBody2D" parent="Boundries"]
+position = Vector2(4.00006, 167)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/LeftOfTank"]
+position = Vector2(1, 1)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_l0pm5")
+
+[node name="RightOfTank" type="StaticBody2D" parent="Boundries"]
+position = Vector2(1279, 282)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/RightOfTank"]
+position = Vector2(1, 1)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_l0pm5")
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(835, 354)
+scale = Vector2(1.25, 1.25)
+
+[node name="ParallaxLayer4" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(1024, 0)
+autoscroll = Vector2(5, 0)
+
+[node name="TextureRect" type="Sprite2D" parent="Background/ParallaxLayer4"]
+texture_repeat = 2
+position = Vector2(-159.333, -0.499986)
+scale = Vector2(4, 4)
+texture = ExtResource("5_nbeco")
+
+[node name="ParallaxLayer" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(768, 0)
+autoscroll = Vector2(50, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(-162.667, -30.8)
+scale = Vector2(3, 3)
+texture = ExtResource("2_qcuvv")
+
+[node name="ParallaxLayer3" type="Parallax2D" parent="Background"]
+scroll_offset = Vector2(1.59995, 2.39998)
+repeat_size = Vector2(768, 0)
+autoscroll = Vector2(100, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer3"]
+texture_repeat = 2
+position = Vector2(-161.333, 1)
+scale = Vector2(3, 3)
+texture = ExtResource("3_20brm")
+
+[node name="ParallaxLayer2" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(512, 0)
+autoscroll = Vector2(150, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer2"]
+texture_repeat = 2
+position = Vector2(-151.2, 100.8)
+scale = Vector2(2, 2)
+texture = ExtResource("4_o5npy")
+
+[node name="AxolotlCharacter" parent="." instance=ExtResource("5_7h38c")]
+position = Vector2(967, 534)
+scale = Vector2(4, 4)
+collision_mask = 6
+
+[node name="Dangers" type="Node2D" parent="."]
+position = Vector2(-461, 407)
+script = ExtResource("6_hhp3t")
+piller_scene = ExtResource("7_jkiap")
+
+[node name="SpawnTimer" type="Timer" parent="Dangers"]
+
+[node name="Piller" parent="." instance=ExtResource("7_jkiap")]
+position = Vector2(459, 357)

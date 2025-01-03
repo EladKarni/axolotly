@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwc6el7wa1tjf"]
+
+[ext_resource type="Texture2D" uid="uid://d0h4peqg3ciam" path="res://Assets/Backgrounds/stone_piller_obstecal.png" id="1_30dcn"]
+[ext_resource type="Script" path="res://Scenes/Entity/Obstecals/piller.gd" id="1_kha8q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vqcj7"]
+radius = 10.4442
+
+[node name="Piller" type="StaticBody2D"]
+modulate = Color(1, 0.62, 0.62, 1)
+scale = Vector2(7, 7)
+collision_layer = 12
+collision_mask = 0
+script = ExtResource("1_kha8q")
+
+[node name="StonePillerObstecal" type="Sprite2D" parent="."]
+position = Vector2(10.5929, 51.7714)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_30dcn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(10.5929, 51.7714)
+scale = Vector2(1.5, 1.5)
+polygon = PackedVector2Array(2, -25, -7, -25, -17, -20, -16, -11, -12, -11, -8, 15, -12, 17, -11, 21, 14, 21, 14, 16, 9, 13, 3, -13, 5, -15, 2, -25)
+
+[node name="StonePillerObstecal2" type="Sprite2D" parent="."]
+position = Vector2(-10.3355, -52.657)
+rotation = -3.14159
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_30dcn")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(-10.3355, -52.657)
+rotation = -3.14159
+scale = Vector2(1.5, 1.5)
+polygon = PackedVector2Array(2, -25, -7, -25, -17, -20, -16, -11, -12, -11, -8, 15, -12, 17, -11, 21, 14, 21, 14, 16, 9, 13, 3, -13, 5, -15, 2, -25)
+
+[node name="ScoreArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+shape = SubResource("CircleShape2D_vqcj7")
+
+[connection signal="body_exited" from="ScoreArea" to="." method="_on_score_area_body_exited"]
