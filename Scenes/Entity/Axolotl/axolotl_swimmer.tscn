@@ -1,6 +1,7 @@
-[gd_scene load_steps=71 format=3 uid="uid://b5egq0244fu3h"]
+[gd_scene load_steps=73 format=3 uid="uid://b5egq0244fu3h"]
 
 [ext_resource type="Script" path="res://Scripts/EndlessRunnerCoe/axolotl_swimmer.gd" id="1_yje23"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/axolotl_color_shader.gdshader" id="2_epjr3"]
 [ext_resource type="Texture2D" uid="uid://dvn14xrw1jh0b" path="res://Assets/Axolotl/Spritesheets/Axolotl_Black_Floating.png" id="2_hddwt"]
 [ext_resource type="Texture2D" uid="uid://cr7eb4ildr06k" path="res://Assets/Axolotl/Spritesheets/Axolotl_Black_Dash.png" id="2_sie3e"]
 [ext_resource type="Texture2D" uid="uid://dm30jaaqbbqk4" path="res://Assets/Axolotl/Spritesheets/Axolotl_Black_Getting_Up.png" id="3_luomb"]
@@ -9,6 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://duflpilbdofl4" path="res://Assets/Axolotl/Spritesheets/Axolotl_Black_Preparing_To_Swim.png" id="6_afd63"]
 [ext_resource type="Texture2D" uid="uid://c2lcj6hwyvhf8" path="res://Assets/Axolotl/Spritesheets/Axolotl_Black_Swimming.png" id="7_ntxdx"]
 [ext_resource type="Texture2D" uid="uid://dhu4v7m02uqk5" path="res://Assets/Axolotl/Santa Hats/Kyra_Santa_Hat.png" id="8_0nnca"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7m4xn"]
+radius = 7.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0r527"]
+radius = 4.0
+height = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmclg"]
+shader = ExtResource("2_epjr3")
+shader_parameter/blue = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sb0ev"]
 atlas = ExtResource("2_sie3e")
@@ -454,23 +467,26 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7m4xn"]
-radius = 7.0
-height = 14.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0r527"]
-radius = 4.0
-height = 32.0
-
 [node name="Axolotl" type="CharacterBody2D"]
-collision_layer = 9
-collision_mask = 2
+collision_layer = 15
+collision_mask = 15
 script = ExtResource("1_yje23")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, -27)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_7m4xn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(2, -21)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_0r527")
+
 [node name="AxolotlyAnimatedSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_mmclg")
 position = Vector2(2, -16)
 sprite_frames = SubResource("SpriteFrames_s4wia")
-animation = &"dashing"
+animation = &"swimming"
 autoplay = "swimming"
 
 [node name="SantaHat" type="Node2D" parent="."]
@@ -499,13 +515,3 @@ fit_content = true
 metadata/_edit_use_anchors_ = true
 
 [node name="JumpTimer" type="Timer" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, -27)
-rotation = -1.57079
-shape = SubResource("CapsuleShape2D_7m4xn")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(2, -21)
-rotation = -1.57079
-shape = SubResource("CapsuleShape2D_0r527")

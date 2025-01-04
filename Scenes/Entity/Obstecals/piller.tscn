@@ -9,8 +9,7 @@ radius = 10.4442
 [node name="Piller" type="StaticBody2D"]
 modulate = Color(1, 0.62, 0.62, 1)
 scale = Vector2(7, 7)
-collision_layer = 12
-collision_mask = 0
+collision_layer = 2
 script = ExtResource("1_kha8q")
 
 [node name="StonePillerObstecal" type="Sprite2D" parent="."]

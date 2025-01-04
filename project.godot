@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalGameObject="*res://Scripts/Autoloaded/game_quit.gd"
+GlobalGameObject="*res://Scripts/Autoloaded/game_global.gd"
 
 [display]
 
