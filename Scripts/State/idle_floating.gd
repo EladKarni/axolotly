@@ -1,7 +1,7 @@
 extends State
 class_name Floating
 
-@export var idle_timer: int
+@export var idle_timer := 1
 
 @onready var axolotly_animated_sprite: AnimatedSprite2D = $"../../AxolotlyAnimatedSprite"
 @onready var sleep_timer: Timer = $"../../Sleep_Timer"

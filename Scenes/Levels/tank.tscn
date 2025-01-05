@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcfv14tku5j0q"]
+[gd_scene load_steps=12 format=3 uid="uid://dcfv14tku5j0q"]
 
 [ext_resource type="Texture2D" uid="uid://blfkglc8u5grl" path="res://Assets/Backgrounds/Snowman.png" id="1_0owh8"]
 [ext_resource type="Texture2D" uid="uid://kppdxkvtwdtb" path="res://Assets/Backgrounds/christmas_tree.png" id="1_mgcyf"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bincliul27q74" path="res://Scenes/Entity/Axolotl/axolotlIsophene.tscn" id="4_56ma8"]
 [ext_resource type="PackedScene" uid="uid://gtto1yh7t3a6" path="res://Scenes/Entity/Axolotl/axolotlKyra.tscn" id="4_gu3ia"]
 [ext_resource type="PackedScene" uid="uid://b21pxqdwvf6xj" path="res://Scenes/Entity/Axolotl/axolotlRoscoe.tscn" id="4_lg7c0"]
+[ext_resource type="Script" path="res://Scripts/LevelScripts/axolotls_spawner.gd" id="5_773l7"]
 [ext_resource type="PackedScene" uid="uid://cnjmwqbom15d5" path="res://Scenes/UI/pause_menu.tscn" id="8_t2qvi"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_npol4"]
@@ -92,26 +93,9 @@ rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_npol4")
 
 [node name="Axolotls" type="Node2D" parent="."]
-
-[node name="Blu" parent="Axolotls" instance=ExtResource("3_34rmx")]
-position = Vector2(559, 324)
+position = Vector2(317, 206)
 scale = Vector2(3, 3)
-wakeup_delay = 1
-
-[node name="Blast" parent="Axolotls" instance=ExtResource("4_56ma8")]
-position = Vector2(454, 322)
-scale = Vector2(3, 3)
-wakeup_delay = 2
-
-[node name="Charge" parent="Axolotls" instance=ExtResource("4_lg7c0")]
-position = Vector2(173, 316)
-scale = Vector2(3, 3)
-wakeup_delay = 4
-
-[node name="Bolt" parent="Axolotls" instance=ExtResource("4_gu3ia")]
-position = Vector2(72, 317)
-scale = Vector2(3, 3)
-wakeup_delay = 3
+script = ExtResource("5_773l7")
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_t2qvi")]
 visible = false
@@ -121,3 +105,23 @@ offset_right = 327.0
 offset_bottom = 183.0
 target_scene = "res://Scenes/Levels/endless_running_world.tscn"
 target_text = "Swimmy Ax"
+
+[node name="Blu" parent="." instance=ExtResource("3_34rmx")]
+visible = false
+position = Vector2(559, 324)
+scale = Vector2(3, 3)
+
+[node name="Blast" parent="." instance=ExtResource("4_56ma8")]
+visible = false
+position = Vector2(454, 322)
+scale = Vector2(3, 3)
+
+[node name="Charge" parent="." instance=ExtResource("4_lg7c0")]
+visible = false
+position = Vector2(173, 316)
+scale = Vector2(3, 3)
+
+[node name="Bolt" parent="." instance=ExtResource("4_gu3ia")]
+visible = false
+position = Vector2(72, 317)
+scale = Vector2(3, 3)

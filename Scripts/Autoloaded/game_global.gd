@@ -3,22 +3,18 @@ extends Node
 signal add_score
 signal game_paused
 
-var axolotl_body_collection = {
-	0 : preload("res://Assets/Axolotl/Spritesheets/Axolotl_Albino_Dash.png"),
-	1 : preload("res://Assets/Axolotl/Spritesheets/Axolotl_Black_Dash.png"),
-	2 : preload("res://Assets/Axolotl/Spritesheets/Axolotl_Blue_Dash.png"),
-	3 : preload("res://Assets/Axolotl/Spritesheets/Axolotl_Brown_Dash.png"),
-	4 : preload("res://Assets/Axolotl/Spritesheets/Axolotl_Deep_Sea_Dash.png"),
-	5 : preload("res://Assets/Axolotl/Spritesheets/Axolotl_Pink_Dash.png"),
-	6 : preload("res://Assets/Axolotl/Spritesheets/Axolotl_Purple_Dash.png"),
-	7 : preload("res://Assets/Axolotl/Spritesheets/Axolotl_Red_Dash.png"),
-}
+var saved_axolotls_data : Array = []
 
-var hat_collection = {
-	0 : preload("res://Assets/Axolotl/Santa Hats/Isophene_Santa_Hat.png"),
-	1 : preload("res://Assets/Axolotl/Santa Hats/Roscoe_Santa_Hat.png"),
-	2 : preload("res://Assets/Axolotl/Santa Hats/Sylvis_Santa_Hat.png"),
-}
+func _ready() -> void:
+	var dir = DirAccess.open("res://Saves/Axolotls/")
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while true:
+		if file_name == "":
+			#break the while loop when get_next() returns ""
+			break
+		else:
+			saved_axolotls_data.append(file_name)
 
 # Called when the node enters the scene tree for the first time.
 func _unhandled_key_input(event: InputEvent) -> void:

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Axolotl_Save_Data" load_steps=3 format=3 uid="uid://cy7xedhra2lp4"]
+
+[ext_resource type="PackedScene" uid="uid://ci7rwsbees8no" path="res://Scenes/Entity/Axolotl/axolotly_normal_animated_sprite.tscn" id="1_5vtvs"]
+[ext_resource type="Script" path="res://Scripts/Resources/axolotl_data.gd" id="1_8xhss"]
+
+[resource]
+script = ExtResource("1_8xhss")
+name = "Bolt"
+body = ExtResource("1_5vtvs")
+hat = "res://Assets/Axolotl/Santa Hats/Kyra_Santa_Hat.png"

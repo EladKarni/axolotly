@@ -501,10 +501,8 @@ sleep_strength = 3
 script = ExtResource("10_uhiqg")
 idle_timer = 5
 
-[node name="Swimming" type="Node" parent="StateMachine" node_paths=PackedStringArray("animatedSprite")]
+[node name="Swimming" type="Node" parent="StateMachine"]
 script = ExtResource("11_ypqtf")
-animatedSprite = NodePath("../../AxolotlyAnimatedSprite")
-swim_speed = 10
 
 [node name="Idle Floating" type="Node" parent="StateMachine"]
 script = ExtResource("12_wdxl7")

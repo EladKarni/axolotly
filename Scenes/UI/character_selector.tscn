@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cflac7nlfpfb2"]
+[gd_scene load_steps=5 format=3 uid="uid://bq3r0x7ew1qt4"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterSelector/body.gd" id="1_pm42j"]
 [ext_resource type="Texture2D" uid="uid://cr7eb4ildr06k" path="res://Assets/Axolotl/Spritesheets/Axolotl_Black_Dash.png" id="2_33ujk"]
@@ -31,31 +31,60 @@ scale = Vector2(0.0582707, 0.0582707)
 texture = ExtResource("2_m2x7d")
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 481.0
-offset_top = 457.0
-offset_right = 729.0
-offset_bottom = 527.0
+offset_left = 431.0
+offset_top = 458.0
+offset_right = 793.0
+offset_bottom = 528.0
+pivot_offset = Vector2(177, 6)
 
-[node name="MarginContainer" type="CenterContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+[node name="ColorSelector" type="CenterContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/ColorSelector"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="PreviousBtn" type="Button" parent="Panel/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ColorSelector/HBoxContainer"]
+layout_mode = 2
+text = "Color"
+
+[node name="PreviousBtn" type="Button" parent="Panel/VBoxContainer/ColorSelector/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Previous"
 
-[node name="NextBtn" type="Button" parent="Panel/MarginContainer/HBoxContainer"]
+[node name="NextBtn" type="Button" parent="Panel/VBoxContainer/ColorSelector/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Next "
+
+[node name="HatSelector" type="CenterContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/HatSelector"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HatSelector/HBoxContainer"]
+layout_mode = 2
+text = "Hat    "
+
+[node name="PreviousBtn" type="Button" parent="Panel/VBoxContainer/HatSelector/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Previous"
+
+[node name="NextBtn" type="Button" parent="Panel/VBoxContainer/HatSelector/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Next "
