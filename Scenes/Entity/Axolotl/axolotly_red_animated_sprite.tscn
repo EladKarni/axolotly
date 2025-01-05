@@ -443,4 +443,4 @@ animations = [{
 position = Vector2(2, -16)
 sprite_frames = SubResource("SpriteFrames_s4wia")
 animation = &"swimming"
-autoplay = "idle_resting"
+autoplay = "swimming"

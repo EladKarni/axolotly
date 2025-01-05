@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq3r0x7ew1qt4"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterSelector/body.gd" id="1_pm42j"]
+
+[node name="CharacterSelector" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1284.0
+offset_bottom = 728.0
+color = Color(0.0119538, 0.37507, 0.413747, 1)
+
+[node name="Skeleton" type="Node2D" parent="."]
+position = Vector2(643, 522)
+scale = Vector2(10, 10)
+
+[node name="Axolotl" type="Node2D" parent="Skeleton"]
+position = Vector2(-1.43051e-06, -2.29478e-06)
+script = ExtResource("1_pm42j")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 488.0
+offset_top = 390.0
+offset_right = 793.0
+offset_bottom = 519.0
+pivot_offset = Vector2(177, 6)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="AxolotlName" type="Label" parent="Panel/VBoxContainer/VBoxContainer2/CenterContainer"]
+layout_mode = 2
+text = "Axolotl"
+
+[node name="ColorSelector" type="CenterContainer" parent="Panel/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer2/ColorSelector"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer2/ColorSelector/HBoxContainer"]
+layout_mode = 2
+text = "Axolotl"
+
+[node name="PreviousBtn" type="Button" parent="Panel/VBoxContainer/VBoxContainer2/ColorSelector/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Previous"
+
+[node name="NextBtn" type="Button" parent="Panel/VBoxContainer/VBoxContainer2/ColorSelector/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Next "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CancelBtn" type="Button" parent="Panel/VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="SelectBtn" type="Button" parent="Panel/VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Select"

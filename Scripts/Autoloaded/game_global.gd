@@ -4,6 +4,7 @@ signal add_score
 signal game_paused
 
 var saved_axolotls_data : Array = []
+var selected_axolotl_index := 0
 
 func _ready() -> void:
 	var dir = DirAccess.open("res://Saves/Axolotls/")
@@ -11,10 +12,13 @@ func _ready() -> void:
 	var file_name = dir.get_next()
 	while true:
 		if file_name == "":
-			#break the while loop when get_next() returns ""
 			break
 		else:
-			saved_axolotls_data.append(file_name)
+			var target_path = "res://Saves/Axolotls/" + file_name
+			saved_axolotls_data.append(target_path)
+		file_name = dir.get_next()
+	
+	print(saved_axolotls_data)
 
 # Called when the node enters the scene tree for the first time.
 func _unhandled_key_input(event: InputEvent) -> void:

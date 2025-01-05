@@ -103,7 +103,7 @@ offset_left = 327.0
 offset_top = 183.0
 offset_right = 327.0
 offset_bottom = 183.0
-target_scene = "res://Scenes/Levels/endless_running_world.tscn"
+target_scene = "res://Scenes/Levels/character_selector.tscn"
 target_text = "Swimmy Ax"
 
 [node name="Blu" parent="." instance=ExtResource("3_34rmx")]

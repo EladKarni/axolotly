@@ -5,7 +5,8 @@ const BASE_AXOLOTL : PackedScene = preload("res://Scenes/Entity/Axolotl/axolotl.
 
 func _ready() -> void:
 	var saved_axolotls = GlobalGameObject.saved_axolotls_data
-	for axolotl_data in saved_axolotls:
+	for axolotl_res_path in saved_axolotls:
+		var axolotl_data = load(axolotl_res_path)
 		var animation_player = axolotl_data.body
 		var animation_player_scene = animation_player.instantiate()
 		

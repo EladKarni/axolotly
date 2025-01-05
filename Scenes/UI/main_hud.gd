@@ -6,7 +6,6 @@ extends Control
 func _ready() -> void:
 	GlobalGameObject.add_score.connect(update_score)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func update_score() -> void:
 	score += 1

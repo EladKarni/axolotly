@@ -12,8 +12,12 @@ var can_jump := true
 func _ready() -> void:
 	jump_timer.wait_time = jump_cooldown
 	jump_timer.timeout.connect(_reset_jump)
-	
-	
+	var saved_axolotl = GlobalGameObject.saved_axolotls_data[GlobalGameObject.selected_axolotl_index]
+
+	var axolotl_data = load(saved_axolotl)
+	var animation_player = axolotl_data.body
+	var animation_player_scene = animation_player.instantiate()
+	add_child(animation_player_scene)
 
 func _physics_process(delta: float) -> void:
 	velocity.y += 0.4  

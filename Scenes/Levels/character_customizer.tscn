@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq3r0x7ew1qt4"]
+[gd_scene load_steps=5 format=3 uid="uid://flminbkdqexq"]
 
-[ext_resource type="Script" path="res://Scripts/CharacterSelector/body.gd" id="1_pm42j"]
-[ext_resource type="Texture2D" uid="uid://cr7eb4ildr06k" path="res://Assets/Axolotl/Spritesheets/Axolotl_Black_Dash.png" id="2_33ujk"]
-[ext_resource type="Texture2D" uid="uid://dhu4v7m02uqk5" path="res://Assets/Axolotl/Santa Hats/Kyra_Santa_Hat.png" id="2_m2x7d"]
-[ext_resource type="Script" path="res://Scripts/CharacterSelector/hat.gd" id="3_tcqc0"]
+[ext_resource type="Script" path="res://Scripts/CharacterSelector/body.gd" id="1_mv848"]
+[ext_resource type="Texture2D" uid="uid://cr7eb4ildr06k" path="res://Assets/Axolotl/Spritesheets/Axolotl_Black_Dash.png" id="2_jxnm6"]
+[ext_resource type="Script" path="res://Scripts/CharacterSelector/hat.gd" id="3_sylec"]
+[ext_resource type="Texture2D" uid="uid://dhu4v7m02uqk5" path="res://Assets/Axolotl/Santa Hats/Kyra_Santa_Hat.png" id="4_k0tld"]
 
 [node name="CharacterSelector" type="Node2D"]
 
@@ -17,18 +17,18 @@ position = Vector2(606, 456)
 scale = Vector2(10, 10)
 
 [node name="Body" type="Node2D" parent="Skeleton"]
-script = ExtResource("1_pm42j")
+script = ExtResource("1_mv848")
 
 [node name="BodySprite" type="Sprite2D" parent="Skeleton/Body"]
-texture = ExtResource("2_33ujk")
+texture = ExtResource("2_jxnm6")
 
 [node name="Hat" type="Node2D" parent="Skeleton"]
-script = ExtResource("3_tcqc0")
+script = ExtResource("3_sylec")
 
 [node name="HatSprite" type="Sprite2D" parent="Skeleton/Hat"]
 position = Vector2(-7, -14)
 scale = Vector2(0.0582707, 0.0582707)
-texture = ExtResource("2_m2x7d")
+texture = ExtResource("4_k0tld")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 431.0

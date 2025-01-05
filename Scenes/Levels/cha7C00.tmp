@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq3r0x7ew1qt4"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterSelector/body.gd" id="1_pm42j"]
+[ext_resource type="Texture2D" uid="uid://cr7eb4ildr06k" path="res://Assets/Axolotl/Spritesheets/Axolotl_Black_Dash.png" id="2_33ujk"]
+
+[node name="CharacterSelector" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1284.0
+offset_bottom = 728.0
+color = Color(0.0119538, 0.37507, 0.413747, 1)
+
+[node name="Skeleton" type="Node2D" parent="."]
+position = Vector2(606, 456)
+scale = Vector2(10, 10)
+
+[node name="Axolotl" type="Node2D" parent="Skeleton"]
+script = ExtResource("1_pm42j")
+
+[node name="BodySprite" type="Sprite2D" parent="Skeleton/Axolotl"]
+texture = ExtResource("2_33ujk")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 426.0
+offset_top = 458.0
+offset_right = 788.0
+offset_bottom = 528.0
+pivot_offset = Vector2(177, 6)
+
+[node name="VBoxContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AxolotlName" type="Label" parent="Panel/VBoxContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "Axolotl"
+
+[node name="ColorSelector" type="CenterContainer" parent="Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer/ColorSelector"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer/ColorSelector/HBoxContainer"]
+layout_mode = 2
+text = "Axolotl"
+
+[node name="PreviousBtn" type="Button" parent="Panel/VBoxContainer/VBoxContainer/ColorSelector/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Previous"
+
+[node name="NextBtn" type="Button" parent="Panel/VBoxContainer/VBoxContainer/ColorSelector/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Next "
