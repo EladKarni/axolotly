@@ -6,33 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_vqcj7"]
 radius = 10.4442
 
-[node name="Piller" type="StaticBody2D"]
+[node name="Piller" type="StaticBody2D" groups=["Piller"]]
 modulate = Color(1, 0.62, 0.62, 1)
 scale = Vector2(7, 7)
 collision_layer = 2
 script = ExtResource("1_kha8q")
-
-[node name="StonePillerObstecal" type="Sprite2D" parent="."]
-position = Vector2(10.5929, 51.7714)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_30dcn")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(10.5929, 51.7714)
-scale = Vector2(1.5, 1.5)
-polygon = PackedVector2Array(2, -25, -7, -25, -17, -20, -16, -11, -12, -11, -8, 15, -12, 17, -11, 21, 14, 21, 14, 16, 9, 13, 3, -13, 5, -15, 2, -25)
-
-[node name="StonePillerObstecal2" type="Sprite2D" parent="."]
-position = Vector2(-10.3355, -52.657)
-rotation = -3.14159
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_30dcn")
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
-position = Vector2(-10.3355, -52.657)
-rotation = -3.14159
-scale = Vector2(1.5, 1.5)
-polygon = PackedVector2Array(2, -25, -7, -25, -17, -20, -16, -11, -12, -11, -8, 15, -12, 17, -11, 21, 14, 21, 14, 16, 9, 13, 3, -13, 5, -15, 2, -25)
 
 [node name="ScoreArea" type="Area2D" parent="."]
 collision_layer = 8
@@ -40,5 +18,27 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
 shape = SubResource("CircleShape2D_vqcj7")
+
+[node name="StonePillerObstecal" type="Sprite2D" parent="."]
+position = Vector2(10.5929, 51.7714)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_30dcn")
+
+[node name="StonePillerObstecal2" type="Sprite2D" parent="."]
+position = Vector2(-10.3355, -52.657)
+rotation = -3.14159
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_30dcn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(10.5929, 51.7714)
+scale = Vector2(1.5, 1.5)
+polygon = PackedVector2Array(1.8, -24.5, -5.7, -24.5, -5.7, -23.7, -9.7, -23.7, -9.7, -22.7, -11.7, -22.7, -11.7, -21.7, -14.7, -21.7, -14.7, -20.7, -15.7, -20.7, -15.7, -19.7, -16.5, -19.7, -16.5, -16.2, -15.7, -16.2, -15.7, -13.2, -14.7, -13.2, -14.7, -11.2, -11.7, -11.2, -11.7, -8.2, -10.7, -8.2, -10.7, -3.2, -9.7, -3.2, -9.7, 1.8, -8.7, 1.8, -8.7, 6.8, -7.7, 6.8, -7.7, 12.8, -6.7, 12.8, -6.7, 15.3, -7.7, 15.3, -7.7, 16.3, -9.7, 16.3, -9.7, 17.3, -11.7, 17.3, -11.7, 19.8, -10.7, 19.8, -10.7, 22.8, -9.7, 22.8, -9.7, 24.5, -2.2, 24.5, -2.2, 23.8, 4.8, 23.8, 4.8, 22.8, 11.8, 22.8, 11.8, 21.8, 13.8, 21.8, 13.8, 17.3, 12.8, 17.3, 12.8, 15.3, 10.8, 15.3, 10.8, 14.3, 8.8, 14.3, 8.8, 13.3, 7.8, 13.3, 7.8, 10.3, 6.8, 10.3, 6.8, 6.3, 5.8, 6.3, 5.8, 2.3, 4.8, 2.3, 4.8, -1.7, 3.8, -1.7, 3.8, -5.7, 2.8, -5.7, 2.8, -11.7, 1.8, -11.7, 1.8, -14.2, 3.8, -14.2, 3.8, -18.7, 2.8, -18.7, 2.8, -22.7, 1.8, -22.7)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(-9.71428, -52.8572)
+rotation = 3.16972
+scale = Vector2(1.5, 1.5)
+polygon = PackedVector2Array(1.8, -24.5, -5.7, -24.5, -5.7, -23.7, -9.7, -23.7, -9.7, -22.7, -11.7, -22.7, -11.7, -21.7, -14.7, -21.7, -14.7, -20.7, -15.7, -20.7, -15.7, -19.7, -16.5, -19.7, -16.5, -16.2, -15.7, -16.2, -15.7, -13.2, -14.7, -13.2, -14.7, -11.2, -11.7, -11.2, -11.7, -8.2, -10.7, -8.2, -10.7, -3.2, -9.7, -3.2, -9.7, 1.8, -8.7, 1.8, -8.7, 6.8, -7.7, 6.8, -7.7, 12.8, -6.7, 12.8, -6.7, 15.3, -7.7, 15.3, -7.7, 16.3, -9.7, 16.3, -9.7, 17.3, -11.7, 17.3, -11.7, 19.8, -10.7, 19.8, -10.7, 22.8, -9.7, 22.8, -9.7, 24.5, -2.2, 24.5, -2.2, 23.8, 4.8, 23.8, 4.8, 22.8, 11.8, 22.8, 11.8, 21.8, 13.8, 21.8, 13.8, 17.3, 12.8, 17.3, 12.8, 15.3, 10.8, 15.3, 10.8, 14.3, 8.8, 14.3, 8.8, 13.3, 7.8, 13.3, 7.8, 10.3, 6.8, 10.3, 6.8, 6.3, 5.8, 6.3, 5.8, 2.3, 4.8, 2.3, 4.8, -1.7, 3.8, -1.7, 3.8, -5.7, 2.8, -5.7, 2.8, -11.7, 1.8, -11.7, 1.8, -14.2, 3.8, -14.2, 3.8, -18.7, 2.8, -18.7, 2.8, -22.7, 1.8, -22.7)
 
 [connection signal="body_exited" from="ScoreArea" to="." method="_on_score_area_body_exited"]

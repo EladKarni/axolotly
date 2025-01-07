@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Axolotl_Save_Data" load_steps=2 format=3 uid="uid://clfr7maxqno2r"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/axolotl_data.gd" id="1_hufyx"]
+
+[resource]
+script = ExtResource("1_hufyx")
+name = ""
+hat = ""

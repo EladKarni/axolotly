@@ -28,8 +28,11 @@ func _physics_process(delta: float) -> void:
 		jump_timer.start()
 
 	collision_data = move_and_collide(velocity)
-	if collision_data && collision_data.get_collider().name == "Piller":
-		GlobalGameObject._pause_game()
+	if collision_data:
+		var collider = collision_data.get_collider()
+		if collider is Node:
+			if collider.is_in_group("Piller"):
+				GlobalGameObject._pause_game()
 
 func _reset_jump() -> void:
 	can_jump = true

@@ -102,7 +102,7 @@ texture = ExtResource("4_o5npy")
 position = Vector2(-461, 325)
 script = ExtResource("6_hhp3t")
 piller_scene = ExtResource("7_jkiap")
-piller_movement_speed = 1.25
+piller_movement_speed = 3.0
 
 [node name="SpawnTimer" type="Timer" parent="Pillers"]
 wait_time = 2.0
